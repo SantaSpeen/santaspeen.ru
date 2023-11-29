@@ -1,0 +1,27 @@
+body {
+    background: radial-gradient(circle, rgb(209, 208, 208), rgb(255, 218, 137));
+    /* Добавляем радиальный градиент от центра к краям */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #center-container {
+    text-align: center;
+  }
+
+  img {
+    border-radius: 50%; /* Делаем изображение круглым */
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .service-logo {
+    width: 48px; /* Ширина логотипов */
+    height: 48px; /* Высота логотипов */
+    margin: 10px;
+  }
+  
