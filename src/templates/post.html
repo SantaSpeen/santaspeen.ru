@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+    <!-- Добавьте стили для переключателя режимов -->
+    <style>
+        .mode-switch {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- Добавьте переключатель режимов в шапку страницы -->
+    <div class="mode-switch">
+        <label for="dark-mode-toggle">Тёмный режим</label>
+        <input type="checkbox" id="dark-mode-toggle" checked>
+    </div>
+
+    <div class="blog-post">
+        <h1>{{ title }}</h1>
+        <div class="metadata">
+            <p class="metadata-left"><a href="/blog">Блог</a> > {{ group }} > {{ title }}</p>
+            <p class="metadata-right">Просмотрено раз: {{ counter }}</p>
+        </div>
+        <p class="edited">Последнее редактирование: {{ edited }}</p>
+        {{ content|safe }}
+    </div>
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode', !darkModeToggle.checked);
+            document.body.classList.toggle('dark-mode', darkModeToggle.checked);
+        });
+    </script>
+</body>
+</html>
