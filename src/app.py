@@ -3,7 +3,9 @@ import os
 import frontmatter
 import json
 from datetime import datetime
-import markdown
+import markdown.extensions.fenced_code
+import markdown.extensions.tables
+
 
 app = Flask(__name__)
 
@@ -78,10 +80,10 @@ def blog_post(path):
     edited = data.get('edited', '')
 
     # Конвертация Markdown в HTML
-    content = markdown.markdown(str(data))
+    content = markdown.markdown(str(data).replace(" \\\n", "<br>").replace("{% ", "{ ").replace(" %}", " }"), extensions=["fenced_code", "tables"])
 
     return render_template('post.html', title=title, group=group, counter=counter, edited=edited, content=content)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

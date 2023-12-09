@@ -1,4 +1,13 @@
 {
-  "first": 61,
-  "second": 3
+  "first": 304,
+  "second": 7,
+  "test": 3,
+  "README": 18,
+  "basic-writing-and-formatting-syntax": 73,
+  "organizing-information-with-tables": 3,
+  "creating-diagrams": 2,
+  "writing-mathematical-expressions": 2,
+  "attaching-files": 2,
+  "about-task-lists": 1,
+  "about-writing-and-formatting-on-github": 1
 }

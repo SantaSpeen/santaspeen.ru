@@ -1,43 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
-    <!-- Добавьте стили для переключателя режимов -->
-    <style>
-        .mode-switch {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 999;
-        }
-    </style>
 </head>
 <body class="dark-mode">
-    <!-- Добавьте переключатель режимов в шапку страницы -->
-    <div class="mode-switch">
-        <label for="dark-mode-toggle">Тёмный режим</label>
-        <input type="checkbox" id="dark-mode-toggle" checked>
+    <div class="mode-switch" onclick="toggleDarkMode()">
+        <img src="" alt="theme" id="mode-icon" class="mode-icon">
     </div>
-
     <div class="blog-list">
         {% for post in blog_list %}
             <div class="blog-item">
-                <a href="{{ url_for('blog_post', path=post.file_name) }}">
-                    <h2>{{ post.title }}</h2>
-                    <p class="edited">{{ post.edited }}</p>
+                <a class="metadata" href="{{ url_for('blog_post', path=post.file_name) }}">
+                    <p class="metadata-left underline" style="font-size: 1.5em; font-weight: bold;">{{ post.title }}</p>
+                    <p class="metadata-right edited">{{ post.edited }}</p>
                 </a>
             </div>
         {% endfor %}
     </div>
-    <script>
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.addEventListener('change', () => {
-            document.body.classList.toggle('light-mode', !darkModeToggle.checked);
-            document.body.classList.toggle('dark-mode', darkModeToggle.checked);
-        });
-    </script>
+    <script src="/static/js/theme.js"></script>
 </body>
 </html>
